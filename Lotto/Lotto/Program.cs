@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lotto.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,45 @@ namespace Lotto
     {
         static void Main(string[] args)
         {
+            SorsolasokTarolo st = new SorsolasokTarolo();
+
+            #region 1.Feladat
+            Console.WriteLine("1. Feladat:");
+            st.beolvasFilebol("sorsolasok.csv");
+            #endregion
+
+            #region 2.Feladat
+            Console.WriteLine("2. Feladat:");
+            st.nyeroszamokGeneralasa();
+            #endregion
+
+            #region 3.Feladat
+            Console.WriteLine("3. Feladat:");
+            Console.WriteLine("\t2019 össz. sorsolt szám: " +
+                st.getSorsoltSzamokSzamaMegadottDatumig(new DateTime(2019, 12, 31)));
+            #endregion
+
+            #region 4.Feladat
+            Console.WriteLine("4. Feladat:");
+            st.parosParatlan();
+            #endregion
+
+            #region 5.Feladat
+            Console.WriteLine("5. Feladat: (3 vagy annál több) 45 alatti számok");
+            st.legtobbNegyvenotAlattiSzam();
+            #endregion
+
+            #region 6.Feladat
+            Console.WriteLine("6. Feladat:");
+            st.egynelTobbszorStatisztika();
+            #endregion
+
+            #region 7.Feladat
+            Console.WriteLine("7. Feladat:");
+            
+            #endregion
+
+            Console.ReadKey();
         }
     }
 }
