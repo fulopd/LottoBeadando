@@ -1,6 +1,7 @@
 ﻿using Lotto.Repository;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,8 +47,17 @@ namespace Lotto
 
             #region 7.Feladat
             Console.WriteLine("7. Feladat:");
-            
+            DateTime startDate = new DateTime(2020, 01, 04);
+            st.feltoltMegadottKriteriumokSzerintSorsolasiDatumokkal(startDate, 7, 10);
             #endregion
+            
+            #region 8.Feladat
+            Console.WriteLine("8. Feladat:");
+            st.mentesFileba("lottoszamok.csv");
+            Console.WriteLine("\tFile mentése befejeződött.");
+            Process.Start(Environment.CurrentDirectory);
+            #endregion
+
 
             Console.ReadKey();
         }

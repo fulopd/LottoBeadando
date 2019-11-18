@@ -34,7 +34,7 @@ namespace Lotto.Repository
                 sorsolasok.Add(new Sorsolas(item));
                 Console.WriteLine("\t"+item.ToShortDateString());
             }
-
+            sr.Close();
            
         }
 
@@ -151,6 +151,47 @@ namespace Lotto.Repository
             }
         }
 
+        public void feltoltMegadottKriteriumokSzerintSorsolasiDatumokkal(DateTime startDate, int lepeskoz, int feltoltesekSzama) {
 
+            sorsolasok.Add(new Sorsolas(startDate));            
+            for (int i = 0; i < feltoltesekSzama; i++)
+            {
+                startDate = startDate.AddDays(lepeskoz);
+                sorsolasok.Add(new Sorsolas(startDate));
+                
+            }
+            kiirDatumok();
+        }
+
+        private void kiirDatumok() {
+
+            foreach (Sorsolas item in sorsolasok)
+            {                
+                Console.WriteLine("\t"+item.sorsolasDatum.ToShortDateString());
+            }
+        }
+
+        public void mentesFileba(string fileName) {
+
+            StreamWriter sw = new StreamWriter(fileName, false, Encoding.Default);
+            foreach (Sorsolas item in sorsolasok)
+            {
+                if (item.nyeroSzamok != null)
+                {
+                    sw.WriteLine(item.sorsolasDatum.ToString("yyyy.MM.dd")
+                        + ";" + item.nyeroSzamok[0]
+                        + ";" + item.nyeroSzamok[1]
+                        + ";" + item.nyeroSzamok[2]
+                        + ";" + item.nyeroSzamok[3]
+                        + ";" + item.nyeroSzamok[4] + ";"
+                        );
+                }
+                else
+                {
+                    sw.WriteLine(item.sorsolasDatum.ToString("yyyy.MM.dd") +";X;X;X;X;X;" );
+                }
+            }
+            sw.Close();
+        }
     }
 }
